@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Harga berdasarkan varian
     $prices = [
-        "Nadizar Seblak Mini" => 10000,
-        "Nadizar Seblak Telor" => 12000,
+        "Nadizar Seblak Mini" => 5000,
+        "Nadizar Seblak Telor" => 10000,
         "Nadizar Seblak Sosis + Mie + Telor" => 15000,
         "Nadizar Seblak Full Isi" => 18000,
         "Nadizar Seblak Paket Komplit" => 20000,
