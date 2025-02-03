@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Seblak</title>
+    <script>
+        function calculateTotal() {
+            const prices = {
+                "Nadizar Seblak Mini": 10000,
+                "Nadizar Seblak Telor": 12000,
+                "Nadizar Seblak Sosis + Mie + Telor": 15000,
+                "Nadizar Seblak Full Isi": 18000,
+                "Nadizar Seblak Paket Komplit": 20000,
+                "Nadizar Es Teh": 5000,
+                "Nadizar Pempek Mini": 12000,
+                "Nadizar Pempek Kapal Selam": 18000,
+                "Nadizar Pempek Paket Komplit": 25000
+            };
+
+            const variant = document.getElementById("variant").value;
+            const quantity = document.getElementById("quantity").value;
+            const price = prices[variant] || 0;
+            const totalPrice = price * quantity;
+
+            document.getElementById("totalPrice").innerText = "Total Harga: Rp " + totalPrice.toLocaleString();
+
+            // Membuat pesan untuk WhatsApp
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const date = document.getElementById("date").value;
+            const area = document.getElementById("area").value;
+            const address = document.getElementById("address").value;
+
+            const message = `Halo ${name},\nTerima kasih telah melakukan pemesanan. Berikut detailnya:\n\n` +
+                `Nama: ${name}\nEmail: ${document.getElementById("email").value}\nNomor HP (WA): ${phone}\n` +
+                `Varian: ${variant}\nJumlah Porsi: ${quantity}\n${document.getElementById("totalPrice").innerText}\n` +
+                `Tanggal: ${date}\nArea: ${area}\nAlamat: ${address}`;
+
+            const waLink = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+            document.getElementById("whatsappLink").href = waLink;
+            document.getElementById("whatsappLink").style.display = "inline-block";
+        }
+    </script>
+</head>
+<body>
+    <h1>Pemesanan Seblak</h1>
+
+    <form onsubmit="event.preventDefault(); calculateTotal();">
+        <label for="name">Nama:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Nomor HP (WA):</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="variant">Varian Seblak:</label><br>
+        <select id="variant" name="variant" required>
+            <option value="Nadizar Seblak Mini">Nadizar Seblak Mini</option>
+            <option value="Nadizar Seblak Telor">Nadizar Seblak Telor</option>
+            <option value="Nadizar Seblak Sosis + Mie + Telor">Nadizar Seblak Sosis + Mie + Telor</option>
+            <option value="Nadizar Seblak Full Isi">Nadizar Seblak Full Isi</option>
+            <option value="Nadizar Seblak Paket Komplit">Nadizar Seblak Paket Komplit</option>
+            <option value="Nadizar Es Teh">Nadizar Es Teh</option>
+            <option value="Nadizar Pempek Mini">Nadizar Pempek Mini</option>
+            <option value="Nadizar Pempek Kapal Selam">Nadizar Pempek Kapal Selam</option>
+            <option value="Nadizar Pempek Paket Komplit">Nadizar Pempek Paket Komplit</option>
+        </select><br><br>
+
+        <label for="quantity">Jumlah Porsi:</label><br>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required><br><br>
+
+        <label for="date">Tanggal Pemesanan:</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="area">Area:</label><br>
+        <input type="text" id="area" name="area" required><br><br>
+
+        <label for="address">Alamat:</label><br>
+        <textarea id="address" name="address" rows="4" required></textarea><br><br>
+
+        <button type="submit">Hitung & Kirim Pesanan</button>
+    </form>
+
+    <h3 id="totalPrice"></h3>
+
+    <a id="whatsappLink" href="#" target="_blank" style="display:none;">Kirim ke WhatsApp</a>
+</body>
+</html>
