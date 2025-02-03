@@ -47,6 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_get_contents("https://api.whatsapp.com/send?phone=$admin_phone&text=$admin_message");
     
     echo nl2br($receipt);
-    echo "<br><a href='$wa_link' target='_blank'>Kirim ke WhatsApp</a>";
+    
 }
 ?>
