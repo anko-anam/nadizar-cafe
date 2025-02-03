@@ -37,7 +37,7 @@
                 `Varian: ${variant}\nJumlah Porsi: ${quantity}\n${document.getElementById("totalPrice").innerText}\n` +
                 `Tanggal: ${date}\nArea: ${area}\nAlamat: ${address}`;
 
-            const waLink = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+            const waLink = `https://api.whatsapp.com/send?phone=6285213041432&text=${encodeURIComponent(message)}`;
             document.getElementById("whatsappLink").href = waLink;
             document.getElementById("whatsappLink").style.display = "inline-block";
         }
