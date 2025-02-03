@@ -46,8 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admin_message = urlencode("Notifikasi Pesanan Baru:\n$receipt");
     file_get_contents("https://api.whatsapp.com/send?phone=$admin_phone&text=$admin_message");
     
-    // Redirect langsung ke link WhatsApp
-    header("Location: $wa_link");
-    exit();
+    echo nl2br($receipt);
+    echo "<br><a href='$wa_link' target='_blank'>Kirim ke WhatsApp</a>";
 }
 ?>
