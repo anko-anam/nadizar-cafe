@@ -440,9 +440,9 @@ https://templatemo.com/tm-558-klassy-cafe
                               <fieldset>
                                 <select value="time" name="time" id="time">
                                     <option value="time">Area</option>
-                                    <option name="Breakfast" id="Breakfast">BNL</option>
-                                    <option name="Lunch" id="Lunch">Metropolis</option>
-                                    <option name="Dinner" id="Dinner">Cijeruk</option>
+                                    <option name="Breakfast" value="BNL">BNL</option>
+                                    <option name="Lunch" value="Metropolis">Metropolis</option>
+                                    <option name="Dinner" value="Cijeruk">Cijeruk</option>
                                 </select>
                               </fieldset>
                             </div>
@@ -800,12 +800,12 @@ https://templatemo.com/tm-558-klassy-cafe
 function sendToWhatsApp() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
-    let variant = document.getElementById("variant").value;
+    let variant = document.getElementById("number-guests").value;
     let quantity = document.getElementById("quantity").value;
     let date = document.getElementById("date").value;
-    let area = document.getElementById("area").value;
+    let area = document.getElementById("time").value;
     let message = document.getElementById("message").value;
-
+    let total = variant * quantity;
     if (!name || !phone || !variant || !quantity || !message) {
         alert("Harap lengkapi semua data");
         return false;
@@ -818,7 +818,8 @@ Varian: ${variant}
 Jumlah: ${quantity} porsi
 Tanggal: ${date}
 Area: ${area}
-Alamat: ${message}`;
+Alamat: ${message}
+Total: Rp.${total}`;
     
     let waUrl = `https://wa.me/6285213041432?text=${encodeURIComponent(waMessage)}`;
     window.open(waUrl, "_blank");
