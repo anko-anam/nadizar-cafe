@@ -800,17 +800,22 @@ https://templatemo.com/tm-558-klassy-cafe
 function sendToWhatsApp() {
     let name = document.getElementById("name").value;
     let phone = document.getElementById("phone").value;
-    let variant = document.getElementById("number-guests").value;
-    let quantity = document.getElementById("quantity").value;
+    let variant = parseInt(document.getElementById("number-guests").value); // Mengubah string menjadi integer
+    let quantity = parseInt(document.getElementById("quantity").value); // Mengubah string menjadi integer
     let date = document.getElementById("date").value;
     let area = document.getElementById("time").value;
     let message = document.getElementById("message").value;
-    let total = variant * quantity;
+
+    // Cek jika ada input yang kosong
     if (!name || !phone || !variant || !quantity || !message) {
         alert("Harap lengkapi semua data");
         return false;
     }
     
+    // Perhitungan total
+    let total = variant * quantity;
+
+    // Membuat pesan untuk WhatsApp
     let waMessage = `Halo, saya ingin memesan:
 Nama: ${name}
 Nomor WA: ${phone}
@@ -820,11 +825,16 @@ Tanggal: ${date}
 Area: ${area}
 Alamat: ${message}
 Total: Rp.${total}`;
-    
+
+    // Encode pesan dan buat URL untuk WhatsApp
     let waUrl = `https://wa.me/6285213041432?text=${encodeURIComponent(waMessage)}`;
-    window.open(waUrl, "_blank");
+    
+    // Coba membuka WhatsApp dengan cara membuka URL di tab yang sama
+    window.location.href = waUrl;
+    
     return false;
 }
+
     </script>
   </body>
 </html>
