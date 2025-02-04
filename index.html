@@ -475,7 +475,6 @@ https://templatemo.com/tm-558-klassy-cafe
 
             let total = variant * quantity;
             let waMessage = `
-            <---------------------------->
             Halo, saya ingin memesan:
             Nama    : ${name}
             Nomor WA: ${phone}
@@ -483,8 +482,8 @@ https://templatemo.com/tm-558-klassy-cafe
             Jumlah  : ${quantity} porsi
             Area    : ${area}
             Alamat  : ${message}
-            Total   : Rp.${total}
-            <--------------------------->`;
+            
+            Total   : Rp.${total}`;
 
             let waUrl = `https://wa.me/6285213041432?text=${encodeURIComponent(waMessage)}`;
             window.location.href = waUrl;
