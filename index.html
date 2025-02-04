@@ -105,7 +105,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h4>NadizarCafe</h4>
                             <h6>SEBLAK GOYANG LIDAH</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#reservation">Pilih Menu</a>
+                                <a href="#contact">Pilih Menu</a>
                             </div>
                         </div>
                     </div>
@@ -290,14 +290,14 @@ https://templatemo.com/tm-558-klassy-cafe
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
                                     <h4>Phone Numbers</h4>
-                                    <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
+                                    <span><a href="#">0852-1643-6404</a><br><a href="#">0852-1204-1432</a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="message">
                                     <i class="fa fa-envelope"></i>
                                     <h4>Emails</h4>
-                                    <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
+                                    <span><a href="#">desidizar@gmail.com</a><br><a href="#">syn.khoirul@gmail.com</a></span>
                                 </div>
                             </div>
                         </div>
@@ -360,16 +360,6 @@ https://templatemo.com/tm-558-klassy-cafe
                                             <option value="12">12</option>
                                         </select>
                                     </fieldset>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div id="filterDate2">
-                                        <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                            <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
-                                            <div class="input-group-addon">
-                                                <span class="glyphicon glyphicon-th"></span>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <fieldset>
@@ -471,9 +461,10 @@ https://templatemo.com/tm-558-klassy-cafe
         function sendToWhatsApp() {
             let name = document.getElementById("name").value;
             let phone = document.getElementById("phone").value;
-            let variant = parseInt(document.getElementById("number-guests").value); 
+            let variant = parseInt(document.getElementById("number-guests").value);
+            let pilihan = document.getElementById("number-guests"); 
+            let selectedOptionText = pilihan.options[pilihan.selectedIndex].text;
             let quantity = parseInt(document.getElementById("quantity").value); 
-            let date = document.getElementById("date").value;
             let area = document.getElementById("time").value;
             let message = document.getElementById("message").value;
 
@@ -483,15 +474,17 @@ https://templatemo.com/tm-558-klassy-cafe
             }
 
             let total = variant * quantity;
-            let waMessage = `Halo, saya ingin memesan:
-            Nama: ${name}
+            let waMessage = `
+            <---------------------------->
+            Halo, saya ingin memesan:
+            Nama    : ${name}
             Nomor WA: ${phone}
-            Varian: ${variant}
-            Jumlah: ${quantity} porsi
-            Tanggal: ${date}
-            Area: ${area}
-            Alamat: ${message}
-            Total: Rp.${total}`;
+            Varian  : ${selectedOptionText}
+            Jumlah  : ${quantity} porsi
+            Area    : ${area}
+            Alamat  : ${message}
+            Total   : Rp.${total}
+            <--------------------------->`;
 
             let waUrl = `https://wa.me/6285213041432?text=${encodeURIComponent(waMessage)}`;
             window.location.href = waUrl;
